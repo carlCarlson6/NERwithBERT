@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "THIS.FILE",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "NERwithBERT.Trainning",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/NERwithBERT.Trainning/main.py",
+            "console": "integratedTerminal"
+        }
+}
