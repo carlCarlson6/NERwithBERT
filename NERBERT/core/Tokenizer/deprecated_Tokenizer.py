@@ -3,7 +3,7 @@ from keras.preprocessing.sequence import pad_sequences
 from transformers import BertTokenizer
 import joblib
 
-
+# TODO meter la funcionalidad de cada metodo en un clase
 class Tokenizer():
 
     def __init__(self, vocabulary='bert-base-multilingual-cased', PathToIndex2Tag = None):
@@ -13,10 +13,12 @@ class Tokenizer():
         self.tag2index = {self.index2tag[key]: key for key in self.index2tag.keys()} if PathToIndex2Tag != None else {}
 
 
+    # TODO deberia ir en otra clase
     def SetTagIndexMapping(self, tags):
         self.tag2index = {tag: index for index, tag in enumerate(tags)}
         self.index2tag = {self.tag2index[key] : key for key in self.tag2index.keys()}
         return self.tag2index, self.index2tag
+
 
     def TokenizeData(self, sentences, labels):
         tokenizedTexts = []

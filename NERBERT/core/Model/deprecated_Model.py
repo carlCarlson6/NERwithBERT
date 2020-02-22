@@ -1,4 +1,4 @@
-import context
+#import context
 import torch
 import torch.nn.functional as F
 from transformers import BertForTokenClassification as BertModel
@@ -6,7 +6,7 @@ from transformers import AdamW
 from tqdm import tqdm, trange
 from seqeval.metrics import f1_score
 from seqeval.metrics import classification_report,accuracy_score,f1_score
-from Tokenizer import Tokenizer 
+from NERBERT.core.Tokenizer.Tokenizer import Tokenizer
 from datetime import datetime
 import os, time, joblib, math
     
