@@ -13,3 +13,9 @@ class ITokenizer(ABC):
     @abstractmethod
     def TokenizeData(self, Sentences: list, Labels: list):
         pass
+
+    @abstractmethod
+    def SetTokenEmbedding(self, TokenizedTexts: list, TokenzedLabels: list):
+        pass
+
+

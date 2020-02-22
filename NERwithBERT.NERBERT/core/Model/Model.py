@@ -6,10 +6,10 @@ from transformers import AdamW
 from tqdm import tqdm, trange
 from seqeval.metrics import f1_score
 from seqeval.metrics import classification_report,accuracy_score,f1_score
-from Tokenizer import Tokenizer
+from Tokenizer import Tokenizer 
 from datetime import datetime
 import os, time, joblib, math
-
+    
 
 class Model():
     def __init__(self, numLabels, model='bert-base-multilingual-cased', loadNew=True):
