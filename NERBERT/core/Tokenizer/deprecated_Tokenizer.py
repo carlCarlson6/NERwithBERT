@@ -20,6 +20,7 @@ class Tokenizer():
         return self.tag2index, self.index2tag
 
 
+    # done
     def TokenizeData(self, sentences, labels):
         tokenizedTexts = []
         tokenizedLabels = []
@@ -49,6 +50,7 @@ class Tokenizer():
 
         return tokenizedTexts, tokenizedLabels
     
+    # done
     def SetTokenEmbedding(self, tokenizedTexts, tokenizedLabels, maxLength=512):
         if maxLength > 512:
             raise Exception('max length con not be bigger than 512')
@@ -71,10 +73,11 @@ class Tokenizer():
         
         return inputIds, tags
 
+    # done
     def SetMaskWordEmbedding(self, inputIds):
         attentionMasks = [[int(i>0) for i in ii] for ii in inputIds]
         return attentionMasks
-
+    # done
     def SetSegmentEmbedding(self, inputIds):
         segmentIds = [[0] * len(inputId) for inputId in inputIds]
         return segmentIds

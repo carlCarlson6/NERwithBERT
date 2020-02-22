@@ -1,3 +1,4 @@
 class MaskWordEmbedder:
-    def __init__(self):
-        super().__init__()
+    def SetMaskWordEmbedding(self, InputIds):
+        attentionMasks = [[int(i>0) for i in ii] for ii in InputIds]
+        return attentionMasks

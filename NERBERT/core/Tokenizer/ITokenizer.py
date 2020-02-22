@@ -10,7 +10,8 @@ class ITokenizer(ABC):
         Tokenizer interface
     """
     @abstractmethod
-    def __init__(self, Vocabulary: str):
+    def __init__(self):
+        self.Tokenizer: BertTokenizer
         pass
 
     @abstractmethod
@@ -18,7 +19,7 @@ class ITokenizer(ABC):
         pass
 
     @abstractmethod
-    def SetTokenEmbedding(self, TokenizedTexts: list, TokenzedLabels: list):
+    def SetTokenEmbedding(self, TokenizedTexts: list, TokenzedLabels: list, MaxLength: int):
         pass
 
     @abstractmethod

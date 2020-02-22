@@ -1,3 +1,4 @@
 class SegmentEmbedder:
-    def __init__(self):
-        super().__init__()
+    def SetSegmentEmbedding(self, InputIds):
+        segmentIds = [[0] * len(inputId) for inputId in InputIds]
+        return segmentIds
