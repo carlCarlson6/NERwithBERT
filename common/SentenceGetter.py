@@ -14,3 +14,15 @@ class SentenceGetter(object):
             return s
         except:
             return None
+
+    def GetDocIds(self):
+        ids = [[s[0] for s in sent] for sent in self.sentences]
+        return ids
+
+    def GetSentences(self):
+        sentences = [[s[1] for s in sent] for sent in self.sentences]
+        return sentences
+
+    def GetLabels(self):
+        labels = [[s[2] for s in sent] for sent in self.sentences]
+        return labels
