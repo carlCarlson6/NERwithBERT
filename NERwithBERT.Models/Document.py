@@ -1,5 +1,9 @@
+from Entity import Entity
 
 class Document:
+    """
+        Entity Data Model
+    """
     self.DocId = str
     self.Text = str
     self.Labels = str
@@ -12,7 +16,7 @@ class Document:
     self.Predictions = None
     self.Entities = []
 
-    def __init__(self, docId=None, text=None, labels=None, tokenizedText=None, tokenizedLabels=None, inputs=None, tags=None, masks=None):
+    def __init__(self, docId=str, text=str, labels=str, tokenizedText=None, tokenizedLabels=None, inputs=None, tags=None, masks=None):
         self.DocId = docId
         self.Text = text
         self.Labels = labels
