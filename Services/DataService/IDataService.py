@@ -1,8 +1,9 @@
+from Services import IService
 from abc import ABC, abstractmethod
 import pandas as pd
 
 
-class IDataService(ABC):
+class IDataService(IService):
     """
         DataService interface
     """
