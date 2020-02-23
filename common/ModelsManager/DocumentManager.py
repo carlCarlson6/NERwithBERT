@@ -1,3 +1,4 @@
+from common.ModelsManager.EntityManager import EntityManager
 import Models
 
 class DocumentManager:
@@ -20,40 +21,43 @@ class DocumentManager:
         return documents
 
     # TODO mirar de refactorizar esta parte
-    def SetEntities(self, predictions):
+    def SetEntities(self, predictions, tokenizedText):
+        entities = []
+        entityManager = EntityManager()
+        entityData = []
+
         predictedTags = [prediction[0] for prediction in predictions][1:-1]
         predictedProbs = [prediction[1] for prediction in predictions][1:-1]
 
-        entityData = []
-
-        lastTagChecked = None
-        for tokenizedWord, predictedTag, predictedProb in zip(self.TokenizedText, predictedTags, predictedProbs):
-
+        for tokenizedWord, predictedTag, predictedProb in zip(tokenizedText, predictedTags, predictedProbs):
             if predictedTag[0:2] == 'B-':
                 if entityData == []:
-                    entityData.append((tokenizedWord, predictedTag, predictedProb))
-                
-                else:
-                    entity = Models.Entity(text=[data[0] for data in entityData], tags=[data[1] for data in entityData], probabilities=[data[2] for data in entityData])
-                    self.Entities.append(entity)
-
+                    entityData.append((tokenizedWord, predictedTag, predictedProb))             
+                else:                    
+                    entity = Models.Entity(
+                        text=entityManager.SetText(entityData), 
+                        tag=entityManager.SetTag(entityData), 
+                        probability=entityManager.SetProbability(entityData)
+                    )
+                    entities.append(entity)
                     entityData = []
                     entityData.append((tokenizedWord, predictedTag, predictedProb))
-
             else:
                 if entityData == []:
-                    pass
-                
+                    pass 
                 else:
                     if predictedTag[0:2] == 'I-':
                         entityData.append((tokenizedWord, predictedTag, predictedProb))
-                    
                     else:
                         if predictedTag == 'O':
-                            entity = Models.Entity(text=[data[0] for data in entityData], tags=[data[1] for data in entityData], probabilities=[data[2] for data in entityData])
-                            self.Entities.append(entity)
-
-                            entityData = []
-            
+                            entity = Models.Entity(
+                                text=entityManager.SetText(entityData), 
+                                tag=entityManager.SetTag(entityData), 
+                                probability=entityManager.SetProbability(entityData)
+                            )       
+                            entities.append(entity)
+                            entityData = []         
                         if predictedTag == 'X':
                             entityData.append((tokenizedWord, predictedTag, predictedProb))
+
+        return entities
