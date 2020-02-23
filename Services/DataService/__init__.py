@@ -1,8 +1,7 @@
 from Services.DataService.IDataService import IDataService
-from common.SentenceGetter import SentenceGetter
-from common.utils.TensorUtils import TensorUtils
+from Services.DataService.TorchDataService import TorchDataService
+import common
 import pandas as pd
-from torch.utils.data import TensorDataset, RandomSampler, SequentialSampler
 from torch.utils.data import DataLoader as TorchDataLoader
 import torch
 
@@ -13,6 +12,7 @@ class DataService(IDataService):
         try:
             self.DataFrame = self.LoadCsv(DataPath='', CsvSeparator=',')
             self.SentenceGetter = SentenceGetter(self.DataFrame)
+            self.torchDataLoader: dict
 
     def LoadCsv(self, DataPath, CsvSeparator, Encoding):
         df = pd.read_csv(DataPath+'.csv', sep=CsvSeparator, encoding=Encoding).fillna(method='ffill')
@@ -31,23 +31,13 @@ class DataService(IDataService):
         return labels
 
     def GetTags(self):
-        uniqueTags = list(set(self.dataFrame['Tag'].values))
-        uniqueTags.append('X')
-        uniqueTags.append('[CLS]')
-        uniqueTags.append('[SEP]')
-        
+        uniqueTags = common.TagGetter().GetUniqueTagValues(self.DataFrame)      
         tagsValues = set(uniqueTags)
         return tagsValues
 
     def GetNumLabels(self):
         return len(self.GetTags())
 
-    def PutDataIntoTorch(self, set, inputs, masks, tags, batchSize):
-        inputsTensor, masksTensor, tagsTensors = TensorUtils.InputsIntoTensor(inputs=[inputs, masks, tags])
-        inputsLongTensor, masksLongTensor, tagsLongTensor = TensorUtils.TensorsToLongTensors([inputsTensor, masksTensor, tagsTensors])
-
-        data = TensorDataset(inputsLongTensor, masksLongTensor, tagsLongTensor)
-        sampler = RandomSampler(data)
-        self.torchDataLoader[set] = TorchDataLoader(data, sampler=sampler, batch_size=batchSize, drop_last=True)
-        
-        return len(inputs)
+    def PutDataIntoTorch(self, setName, inputs, masks, tags, batchSize):
+        self.torchDataLoader[setName] = TorchDataService().PutDataIntoTorch(inputs, masks, tags, batchSize)
+        return self.torchDataLoader[setName]
