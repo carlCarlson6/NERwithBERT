@@ -7,10 +7,13 @@ import torch
 
 
 class DataService(IDataService):
+    """
+        IDataService implementation
+    """
     def __init__(self):
         super().__init__()
         try:
-            self.DataFrame = self.LoadCsv(DataPath='', CsvSeparator=',')
+            self.DataFrame = self.LoadCsv(DataPath='C:\\dev\\AMLPOC\\AMLPOC.BERT\\AMLPOC.BERT.DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted', CsvSeparator=';')
             self.SentenceGetter = SentenceGetter(self.DataFrame)
             self.torchDataLoader: dict
 
