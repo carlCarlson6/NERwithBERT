@@ -17,5 +17,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/NERwithBERT.Trainning/main.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "NERwithBERT.LocalTesting",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/NERwithBERT.LocalTesting/main.py",
+            "console": "integratedTerminal"
         }
+    ]
 }
