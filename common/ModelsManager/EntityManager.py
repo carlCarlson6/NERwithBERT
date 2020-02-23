@@ -1,3 +1,3 @@
-class DocumentManager:
+class EntityManager:
     def __init__(self):
         super().__init__()
