@@ -12,11 +12,17 @@ class DataService(IDataService):
     """
     def __init__(self):
         super().__init__()
-        try:
-            self.DataFrame = self.LoadCsv(DataPath='C:\\dev\\AMLPOC\\AMLPOC.BERT\\AMLPOC.BERT.DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted', CsvSeparator=';')
-            self.SentenceGetter = SentenceGetter(self.DataFrame)
-            self.torchDataLoader: dict
+        #self.DataFrame: pd.DataFrame
+        self.SentenceGetter: common.SentenceGetter
+        self.torchDataLoader: dict
 
+        try:
+            self.DataFrame = self.LoadCsv(DataPath='C:\\dev\\NERwithBERT\\DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted', CsvSeparator=';', Encoding='latin')
+            self.SentenceGetter = common.SentenceGetter(self.DataFrame)
+            self.torchDataLoader: dict
+        except:
+            raise Exception('could not load the data')
+        
     def LoadCsv(self, DataPath, CsvSeparator, Encoding):
         df = pd.read_csv(DataPath+'.csv', sep=CsvSeparator, encoding=Encoding).fillna(method='ffill')
         return df

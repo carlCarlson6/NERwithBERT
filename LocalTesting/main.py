@@ -1,6 +1,6 @@
 import context
-import Services.DataService
-from Services.DataLoader import DataService
+import Models
+from Services import DataService
 from NERBERT.core.Tokenizer import Tokenizer
 
 directory: 'C:\\dev\\AMLPOC\\AMLPOC.BERT\\AMLPOC.BERT.DATA\\bio.data\\bio.dataset.v1\\'
