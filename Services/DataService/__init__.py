@@ -10,14 +10,14 @@ class DataService(IDataService):
     """
         IDataService implementation
     """
-    def __init__(self):
+    def __init__(self, DataPath='C:\\dev\\NERwithBERT\\DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted'):
         super().__init__()
         #self.DataFrame: pd.DataFrame
         self.SentenceGetter: common.SentenceGetter
         self.torchDataLoader: dict
 
         try:
-            self.DataFrame = self.LoadCsv(DataPath='C:\\dev\\NERwithBERT\\DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted', CsvSeparator=';', Encoding='latin')
+            self.DataFrame = self.LoadCsv(DataPath=DataPath, CsvSeparator=';', Encoding='latin')
             self.SentenceGetter = common.SentenceGetter(self.DataFrame)
             self.torchDataLoader: dict
         except:

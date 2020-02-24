@@ -1,6 +1,8 @@
 from transformers import BertTokenizer
 
 class DataTokenizer:
+    def __init__(self):
+        super().__init__()
 
     def TokenizeData(self, Tokenizer, Sentences, Labels):
         tokenizedTexts = []
