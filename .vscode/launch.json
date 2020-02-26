@@ -22,7 +22,7 @@
             "name": "LocalTesting",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/LocalTesting/main.py",
+            "program": "${workspaceFolder}/testing.py",
             "console": "integratedTerminal"
         }
     ]

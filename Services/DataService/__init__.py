@@ -12,7 +12,7 @@ class DataService(IDataService):
     """
     def __init__(self, DataPath='C:\\dev\\NERwithBERT\\DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted'):
         super().__init__()
-        #self.DataFrame: pd.DataFrame
+        self.DataFrame: pd.DataFrame
         self.SentenceGetter: common.SentenceGetter
         self.torchDataLoader: dict
 
