@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from transformers import BertForTokenClassification as BertModel
-from NERBERT.core.Tokenizer import ITokenizer
+from core.Tokenizer import ITokenizer
 import torch
 
 

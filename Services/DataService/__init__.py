@@ -44,6 +44,18 @@ class DataService(IDataService):
         tagsValues = set(uniqueTags)
         return tagsValues
 
+    def GetTagIndexMapping(self):
+        tags = self.GetTags()
+        tag2index = self.__GetTagToIndex(tags) 
+        index2tag = self.__GetIndexToTag(tag2index)
+        return tag2index, index2tag
+
+    def __GetTagToIndex(self, tags):
+        return {tag: index for index, tag in enumerate(tags)}
+
+    def __GetIndexToTag(self, tag2index):
+        return {tag2index[key] : key for key in tag2index.keys()}
+
     def GetNumLabels(self):
         return len(self.GetTags())
 

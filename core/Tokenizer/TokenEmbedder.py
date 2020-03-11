@@ -10,7 +10,7 @@ class TokenEmbedder:
 
     def __GetInputIds(self, Tokenizer, TokenizedText: list, MaxLength: int, DTpye='long', Truncating='post', Padding='post'):
         inputIds = pad_sequences(
-            [Tokenizer.convert_tokens_to_dis(text) for text in TokenizedText],
+            [Tokenizer.convert_tokens_to_ids(text) for text in TokenizedText],
             maxlen=MaxLength, dtype=DTpye,
             truncating=Truncating, padding=Padding
         )

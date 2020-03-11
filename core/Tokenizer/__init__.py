@@ -1,10 +1,9 @@
-from NERBERT.core.Tokenizer.ITokenizer import *
+from core.Tokenizer.ITokenizer import *
 
 class Tokenizer(ITokenizer):
     """
         Implementation of ITokenizer
     """
-    #TODO ver como intorducir TagToIndex 
     def __init__(self, TagToIndex: dict, Vocabulary='bert-base-multilingual-cased'):
         super().__init__()
         self.Tokenizer = BertTokenizer.from_pretrained(Vocabulary)

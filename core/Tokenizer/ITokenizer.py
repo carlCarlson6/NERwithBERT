@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from transformers import BertTokenizer
-from NERBERT.core.Tokenizer.DataTokenizer import DataTokenizer
-from NERBERT.core.Tokenizer.TokenEmbedder import TokenEmbedder
-from NERBERT.core.Tokenizer.MaskWordEmbedder import MaskWordEmbedder
-from NERBERT.core.Tokenizer.SegmentEmbedder import SegmentEmbedder
+from core.Tokenizer.DataTokenizer import DataTokenizer
+from core.Tokenizer.TokenEmbedder import TokenEmbedder
+from core.Tokenizer.MaskWordEmbedder import MaskWordEmbedder
+from core.Tokenizer.SegmentEmbedder import SegmentEmbedder
 
 class ITokenizer(ABC):
     """

@@ -1,1 +1,1 @@
-from NERBERT.core.Model import IModel, Model
+from core.Model import IModel, Model
