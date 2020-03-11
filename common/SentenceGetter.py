@@ -16,7 +16,7 @@ class SentenceGetter(object):
             return None
 
     def GetDocIds(self):
-        ids = [[s[0] for s in sent] for sent in self.sentences]
+        ids = [sentence[0][0] for sentence in self.sentences]
         return ids
 
     def GetSentences(self):

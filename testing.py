@@ -1,6 +1,7 @@
 import Models
-from Services import DataService
+from Services.DataService import DataService
 from core.Tokenizer import Tokenizer
+from common.ModelsManager.DocumentManager import DocumentManager
 
 directory= 'C:\\dev\\NERwithBERT\\DATA\\bio.data\\bio.dataset.v1\\bio_dataset_splitted'
 fileName = 'bio_dataset_splitted'
@@ -16,5 +17,10 @@ tokenizedText, tokenizedLabels = tokenizer.TokenizeData(sentences, labels)
 inputIds, tags = tokenizer.SetTokenEmbedding(tokenizedText, tokenizedLabels)
 segmentIds = tokenizer.SetSegmentEmbedding(inputIds)
 attentionMasks = tokenizer.SetMaskWordEmbedding(inputIds)
+
+documentManager = DocumentManager()
+documents = documentManager.GetDocuments(docIds, sentences, labels, tokenizedText, tokenizedLabels, inputIds, tags, attentionMasks)
+
+
 
 k = 0

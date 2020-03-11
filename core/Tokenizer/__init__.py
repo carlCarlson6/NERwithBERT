@@ -26,6 +26,7 @@ class Tokenizer(ITokenizer):
         attentionMasks = maskWordEmbedder.SetMaskWordEmbedding(InputIds)
         return attentionMasks
 
+    # TODO quitar ¿?
     def SetSegmentEmbedding(self, InputIds):
         segmentEmbedder = SegmentEmbedder()
         segmentIds = segmentEmbedder.SetSegmentEmbedding(InputIds)
